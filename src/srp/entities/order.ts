@@ -1,7 +1,7 @@
-import { Messaging } from './messaging'
+import { Messaging } from '../services/messaging'
 import { ShoppingCart } from './shopping-cart'
 import { orderStatus } from './interfaces/order-status'
-import { Persistency } from './persistency'
+import { Persistency } from '../services/persistency'
 
 export class Order {
   private _orderStatus: orderStatus = 'open'
