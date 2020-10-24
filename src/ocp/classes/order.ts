@@ -23,7 +23,9 @@ export class Order {
     }
 
     this._orderStatus = 'closed'
-    this.messaging.sendMessage(`Seu pedido ${this.cart.total()} foi recebido.`)
+    this.messaging.sendMessage(
+      `Seu pedido ${this.cart.totalWithDiscount()} foi recebido.`,
+    )
     this.persistency.saveOrder()
     this.cart.clear()
   }
