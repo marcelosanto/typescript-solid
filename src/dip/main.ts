@@ -18,6 +18,7 @@ const enterpriseCustomer = new EnterpriseCustomer(
   'Caipora Farms',
   '111.1111-0001/29',
 )
+
 const order = new Order(
   shoppingCart,
   menssaging,
