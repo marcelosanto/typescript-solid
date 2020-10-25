@@ -8,12 +8,22 @@ import { Order } from './classes/order'
 import { ShoppingCart } from './classes/shopping-cart'
 import { Product } from './classes/product'
 import { NoDiscount } from './classes/discount'
+import { EnterpriseCustomer } from './classes/customer'
 
 const noDiscount = new NoDiscount()
 const shoppingCart = new ShoppingCart(noDiscount)
 const menssaging = new Messaging()
 const persistency = new Persistency()
-const order = new Order(shoppingCart, menssaging, persistency)
+const enterpriseCustomer = new EnterpriseCustomer(
+  'Caipora Farms',
+  '111.1111-0001/29',
+)
+const order = new Order(
+  shoppingCart,
+  menssaging,
+  persistency,
+  enterpriseCustomer,
+)
 
 shoppingCart.addItem(new Product('Camiseta', 49.9))
 shoppingCart.addItem(new Product('Caderno', 3.29))

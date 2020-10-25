@@ -2,6 +2,7 @@ import { Messaging } from '../services/messaging'
 import { ShoppingCart } from './shopping-cart'
 import { orderStatus } from './interfaces/order-status'
 import { Persistency } from '../services/persistency'
+import { CustomerOrder } from './interfaces/custumer-protocol'
 
 export class Order {
   private _orderStatus: orderStatus = 'open'
@@ -10,6 +11,7 @@ export class Order {
     private readonly cart: ShoppingCart,
     private readonly messaging: Messaging,
     private readonly persistency: Persistency,
+    private readonly customer: CustomerOrder,
   ) {}
 
   get orderStatus(): orderStatus {
@@ -18,7 +20,7 @@ export class Order {
 
   checkout(): void {
     if (this.cart.isEmpty()) {
-      console.log('Seu carrionho está vazio')
+      console.log('Seu carrinho está vazio')
       return
     }
 
@@ -28,5 +30,8 @@ export class Order {
     )
     this.persistency.saveOrder()
     this.cart.clear()
+    console.log(
+      `O cliente é: ${this.customer.getName()}, ${this.customer.getIDN()}`,
+    )
   }
 }
